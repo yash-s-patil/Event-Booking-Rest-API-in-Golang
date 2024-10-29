@@ -103,7 +103,7 @@ docker build -t event-booking-api .
 docker run -d -p 8080:8080 event-booking-api
 ```
 
-### Testing the API
+## Testing the API
 You can use an HTTP client like VSCode's "REST Client" extension or Postman to test the API endpoints. Here's how you can test the different endpoints:
 
 - Signup
