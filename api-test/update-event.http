@@ -1,0 +1,10 @@
+PUT http://localhost:8080/events/3
+Content-Type: application/json
+Authorization: your_auth
+
+{
+    "name": "Event 3",
+    "description": "third Event",
+    "location": "Updated Location",
+    "dateTime": "2024-02-01T15:30:00.00Z"
+}

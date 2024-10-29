@@ -1,0 +1,10 @@
+POST http://localhost:8080/events
+Content-Type: application/json
+Authorization: your_auth 
+
+{
+    "name": "Test event 1",
+    "description": "test Event 1", 
+    "location": "test location 1",
+    "dateTime": "2024-01-01T15:30:00.000Z"
+}
