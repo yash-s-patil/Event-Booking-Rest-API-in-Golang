@@ -86,16 +86,104 @@ Set up environment variables (e.g., database configuration, JWT secret).
 go run main.go
 ```
 
-## Usage
-Once the API is running, you can interact with it using tools like curl, Postman, or any HTTP client.
-
-### Example Requests
-- Create an Event:
+## Setup And Installation (Alternative - Using Dockerfile)
+- Clone the repository
 ```
-curl -X POST -H "Authorization: Bearer <your-token>" -d '{"name": "Event Name", "date": "2024-01-01", "location": "Event Location"}' http://localhost:8080/events
+git clone https://github.com/yash-s-patil/Event-Booking-Rest-API-in-Golang.git
+cd Event-Booking-Rest-API-in-Golang
 ```
 
-- Register for an Event:
+- Build the Docker Image
 ```
-curl -X POST -H "Authorization: Bearer <your-token>" http://localhost:8080/events/{id}/register
+docker build -t event-booking-api .
 ```
+
+- Run the Docker Container
+```
+docker run -d -p 8080:8080 event-booking-api
+```
+
+### Testing the API
+You can use an HTTP client like VSCode's "REST Client" extension or Postman to test the API endpoints. Here's how you can test the different endpoints:
+
+- Signup
+```
+POST http://localhost:8080/signup
+Content-Type: application/json
+
+{
+    "email": "test3@example.com",
+    "password": "test"
+}
+```
+
+- Login
+```
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+    "email": "test2@example.com",
+    "password": "test2"
+}
+```
+Copy the returned token, you'll need it for the authenticated endpoints.
+
+- Create Event
+```
+POST http://localhost:8080/events
+Content-Type: application/json
+Authorization: your_auth_token
+
+{
+    "name": "Test event 1",
+    "description": "test Event 1",
+    "location": "test location 1",
+    "dateTime": "2024-01-01T15:30:00.000Z"
+}
+```
+
+- Get Events
+```
+GET http://localhost:8080/events
+```
+
+- Get Event by ID
+```
+GET http://localhost:8080/events/1
+```
+
+- Update Event
+```
+PUT http://localhost:8080/events/1
+Content-Type: application/json
+Authorization: your_auth_token
+
+{
+    "name": "Event Update",
+    "description": "update Event",
+    "location": "Updated Location",
+    "dateTime": "2024-02-01T15:30:00.00Z"
+}
+```
+
+- Delete Event
+```
+DELETE http://localhost:8080/events/1
+Authorization: your_auth_token
+```
+
+- Register for Event
+```
+POST http://localhost:8080/events/1/register
+Authorization: your_auth_token
+```
+
+- Cancel Registration
+```
+DELETE http://localhost:8080/events/1/register
+Authorization: your_auth_token
+```
+
+
+
